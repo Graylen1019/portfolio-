@@ -25,7 +25,7 @@ export const LoadingSection = () => {
   useEffect(() => {
     const loadingOffTimer = setTimeout(() => {
       setLoading(false);
-    }, 2400); // This should be >= lettersLoaded_ms + transition duration of the translate
+    }, 3500); // This should be >= lettersLoaded_ms + transition duration of the translate
     return () => clearTimeout(loadingOffTimer);
   }, []);
 
@@ -47,7 +47,7 @@ export const LoadingSection = () => {
         {[300, 500, 700, 900, 1100, 1300, 1500].map((duration, index) => (
           <div
             key={index} // Unique key for list rendering
-            className={`bg-gradient-to-b from-black to-[#2a2a2a] h-full w-[14.2857142857vw] transition ease-in-out ${
+            className={`bg-gradient-to-b from-black to-[#2a2a2a] h-full w-[14.2857142857vw] duration-1000 transition ease-in-out ${
               fadeOut ? "border-[#af76c4] border-l-4 " : ""
             } ${translate}`}
             style={{ transitionDuration: `${duration}ms` }} // Apply dynamic duration

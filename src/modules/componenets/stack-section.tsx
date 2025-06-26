@@ -4,10 +4,10 @@ export const StackSection = () => {
   return (
     <div
       id="container"
-      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4 py-[128px]" // Removed h-[100svh] and max-h-[536px]
+      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4 pt-[84px] pb-[128px]" // Removed h-[100svh] and max-h-[536px]
     >
       <div className="flex items-center gap-4 mb-48">
-        <h1 data-aos="fade-up" className="text-4xl text-[#Af76c4] uppercase leading-none">
+        <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] uppercase leading-none">
           My stack
         </h1>
       </div>
@@ -83,7 +83,7 @@ export const StackSection = () => {
             </p>
           </div>
           <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
-            <div data-aos="fade-up" className="flex gap-3.5 items-center leading-none"> {/* Corrected gap-3 5 to gap-3.5 */}
+            <div data-aos-delay="200" data-aos="fade-up" className="flex gap-3.5 items-center leading-none"> {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -105,7 +105,7 @@ export const StackSection = () => {
             </p>
           </div>
           <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
-            <div data-aos="fade-up" className="flex gap-3.5 items-center leading-none"> {/* Corrected gap-3 5 to gap-3.5 */}
+            <div data-aos-delay="300" data-aos="fade-up" className="flex gap-3.5 items-center leading-none"> {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={60}
