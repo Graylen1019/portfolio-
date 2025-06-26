@@ -4,10 +4,8 @@ import { motion, AnimatePresence } from "motion/react";
 import React, { useRef, useState, useEffect } from "react";
 
 export const BackgroundBeamsWithCollision = ({
-  children,
   className,
 }: {
-  children: React.ReactNode;
   className?: string;
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -232,7 +230,6 @@ export const BackgroundBeamsWithCollision = ({
         />
       ))}
 
-      {children}
       <div
         ref={containerRef}
         className="absolute bottom-0 bg-neutral-100 w-screen min-w-screen inset-x-0 pointer-events-none"

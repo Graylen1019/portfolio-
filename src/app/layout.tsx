@@ -1,3 +1,4 @@
+// layout.tsx
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
@@ -24,11 +25,13 @@ export default function RootLayout({
       <body
         className={`bg-gradient-to-b from-black to-[#232323] ${anton} antialiased`}
       >
-        <BackgroundBeamsWithCollision>
-          <BackgroundBeamsWithCollision>
-            <AOSProvider>{children}</AOSProvider>
-          </BackgroundBeamsWithCollision>
-        </BackgroundBeamsWithCollision>
+        <BackgroundBeamsWithCollision className="fixed inset-0 z-0" /> {/* Add fixed inset-0 z-0 */}
+
+        <AOSProvider>
+          <div className="relative z-10">
+            {children}
+          </div>
+        </AOSProvider>
       </body>
     </html>
   );
