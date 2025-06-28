@@ -1,8 +1,10 @@
 // page.tsx
 "use client";
 import { AboutSection } from "@/modules/componenets/about-section";
+import { FooterSection } from "@/modules/componenets/footer";
 import { LandingSection } from "@/modules/componenets/landing-section";
 import { LoadingSection } from "@/modules/componenets/loading-section";
+import { ProjectSection } from "@/modules/componenets/project-section";
 import { StackSection } from "@/modules/componenets/stack-section";
 import { useEffect, useState } from "react";
 
@@ -57,6 +59,12 @@ export default function Home() {
           </section>
           <section id="stack" className="">
             <StackSection />
+          </section>
+          <section id="projects" className="">
+            <ProjectSection />
+          </section>
+          <section id="footer" className="">
+            <FooterSection />
           </section>
         </div>
       )}
