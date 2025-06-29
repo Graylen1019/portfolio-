@@ -8,8 +8,8 @@ export const BackgroundBeamsWithCollision = ({
 }: {
   className?: string;
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const parentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const parentRef = useRef<HTMLDivElement | null>(null);
 
   const beams = [
     {
@@ -216,7 +216,7 @@ export const BackgroundBeamsWithCollision = ({
     <div
       ref={parentRef}
       className={cn(
-        "h-screen md:h-screen bg-gradient-to-b from-black to-[#232323] relative flex items-center w-screen min-w- justify-center overflow-hidden",
+        "h-screen md:h-screen bg-gradient-to-b from-black to-[#232323] relative flex items-center w-screen min-w-screen justify-center overflow-hidden",
         // h-screen if you want bigger
         className
       )}
@@ -245,8 +245,8 @@ export const BackgroundBeamsWithCollision = ({
 const CollisionMechanism = React.forwardRef<
   HTMLDivElement,
   {
-    containerRef: React.RefObject<HTMLDivElement>;
-    parentRef: React.RefObject<HTMLDivElement>;
+    containerRef: React.RefObject<HTMLDivElement | null>;
+    parentRef: React.RefObject<HTMLDivElement | null>;
     beamOptions?: {
       initialX?: number;
       translateX?: number;
@@ -259,6 +259,7 @@ const CollisionMechanism = React.forwardRef<
       repeatDelay?: number;
     };
   }
+  // eslint-disable-next-line
 >(({ parentRef, containerRef, beamOptions = {} }, ref) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
@@ -272,6 +273,8 @@ const CollisionMechanism = React.forwardRef<
   const [cycleCollisionDetected, setCycleCollisionDetected] = useState(false);
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const checkCollision = () => {
       if (
         beamRef.current &&
@@ -290,31 +293,29 @@ const CollisionMechanism = React.forwardRef<
 
           setCollision({
             detected: true,
-            coordinates: {
-              x: relativeX,
-              y: relativeY,
-            },
+            coordinates: { x: relativeX, y: relativeY },
           });
           setCycleCollisionDetected(true);
         }
       }
+
+      animationFrameId = requestAnimationFrame(checkCollision);
     };
 
-    const animationInterval = setInterval(checkCollision, 50);
+    animationFrameId = requestAnimationFrame(checkCollision);
 
-    return () => clearInterval(animationInterval);
-  }, [cycleCollisionDetected, containerRef]);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [cycleCollisionDetected, containerRef, parentRef]);
 
   useEffect(() => {
     if (collision.detected && collision.coordinates) {
-      setTimeout(() => {
+      const resetTimeout = setTimeout(() => {
         setCollision({ detected: false, coordinates: null });
         setCycleCollisionDetected(false);
-      }, 2000);
-
-      setTimeout(() => {
         setBeamKey((prevKey) => prevKey + 1);
       }, 2000);
+
+      return () => clearTimeout(resetTimeout);
     }
   }, [collision]);
 
@@ -389,14 +390,25 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
       {spans.map((span) => (
         <motion.span
           key={span.id}
-          initial={{ x: span.initialX, y: span.initialY, opacity: 1 }}
+          initial={{
+            x: span.initialX,
+            y: span.initialY,
+            opacity: 1,
+            scale: 0.5,
+          }}
           animate={{
             x: span.directionX,
             y: span.directionY,
             opacity: 0,
+            scale: Math.random() * 1.5 + 0.5,
           }}
           transition={{ duration: Math.random() * 1.5 + 0.5, ease: "easeOut" }}
-          className="absolute h-1 w-1 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500"
+          className="absolute h-1 w-1 rounded-full"
+          style={{
+            background: `linear-gradient(to bottom, ${
+              Math.random() > 0.5 ? "indigo" : "purple"
+            } 0%, #a855f7 100%)`,
+          }}
         />
       ))}
     </div>
