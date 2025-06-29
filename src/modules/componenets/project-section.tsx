@@ -47,7 +47,7 @@ export const ProjectSection = () => {
   return (
     <div
       id="projects-container"
-      className="w-screen max-w-[1148px] mx-auto px-4 pt-[84px] pb-[128px] text-white"
+      className="w-screen max-w-[1148px] mx-auto px-4 text-white"
     >
       <div className="flex items-center gap-4 mb-20 justify-center">
         <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] uppercase leading-none">

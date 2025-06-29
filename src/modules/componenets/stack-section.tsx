@@ -4,20 +4,20 @@ export const StackSection = () => {
   return (
     <div
       id="container"
-      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4 pt-[84px] pb-[128px]" // Removed h-[100svh] and max-h-[536px]
+      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4" // Removed h-[100svh] and max-h-[536px]
     >
-      <div className="flex items-center gap-4 mb-48">
+      <div className="flex items-center gap-4">
         <h1
           data-aos="fade-up"
-          className="text-5xl text-[#Af76c4] uppercase leading-none"
+          className="text-4xl sm:text-5xl font-bold text-center text-[#af76c4] mb-20"
         >
           My stack
         </h1>
       </div>
-      <div className="space-y-32">
+      <div className="space-y-24 md:space-y-32">
         <div className="grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
-            <p className="text-5xl font-anton leading-none text-muted-foreground uppercase">
+            <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               frontend:
             </p>
           </div>
@@ -36,7 +36,7 @@ export const StackSection = () => {
                   alt="react-icon"
                 />
               </div>
-              <span className="text-2xl">React</span>
+              <span className="text-xl md:text-2xl">React</span>
             </div>
             <div
               data-aos-delay="150"
@@ -70,7 +70,7 @@ export const StackSection = () => {
                   alt="tailwind-icon"
                 />
               </div>
-              <span className=" text-2xl">Tailwind</span>
+              <span className=" text-xl md:text-2xl">Tailwind</span>
             </div>
             <div
               data-aos-delay="350"
@@ -87,7 +87,7 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">Typescript</span>
+              <span className="text-xl md:text-2xl">Typescript</span>
             </div>
             <div
               data-aos-delay="400"
@@ -104,13 +104,13 @@ export const StackSection = () => {
                   alt="javascript-icon"
                 />
               </div>
-              <span className="text-2xl">Javascript</span>
+              <span className="text-xl md:text-2xl">Javascript</span>
             </div>
           </div>
         </div>
         <div className="grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
-            <p className="text-5xl font-anton leading-none text-muted-foreground uppercase">
+            <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               backend:
             </p>
           </div>
@@ -130,7 +130,7 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">
+              <span className="text-xl md:text-2xl">
                 tRPC (TypeScript Remote Procedure Call)
               </span>
             </div>
@@ -149,13 +149,13 @@ export const StackSection = () => {
                   alt="clerk-js"
                 />
               </div>
-              <span className="text-2xl">Clerk Authentication</span>
+              <span className="text-xl md:text-2xl">Clerk Authentication</span>
             </div>
           </div>
         </div>
         <div className="grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
-            <p className="text-5xl font-anton leading-none text-muted-foreground uppercase">
+            <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               database:
             </p>
           </div>
@@ -175,13 +175,13 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">Drizzle ORM</span>
+              <span className="text-xl md:text-2xl">Drizzle ORM</span>
             </div>
           </div>
         </div>
         <div className="grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
-            <p className="text-5xl font-anton leading-none text-muted-foreground uppercase">
+            <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               tools:
             </p>
           </div>
@@ -200,7 +200,7 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">NPM</span>
+              <span className="text-xl md:text-2xl">NPM</span>
             </div>
             <div
               data-aos-delay="200"
@@ -217,7 +217,7 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">Bun</span>
+              <span className="text-xl md:text-2xl">Bun</span>
             </div>
             <div
               data-aos-delay="400"
@@ -234,7 +234,7 @@ export const StackSection = () => {
                   alt="typescript-icon"
                 />
               </div>
-              <span className="text-2xl">git</span>
+              <span className="text-xl md:text-2xl">git</span>
             </div>
           </div>
         </div>

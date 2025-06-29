@@ -46,26 +46,33 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <main className="h-screen w-screen">
       {loading ? (
         <LoadingSection />
       ) : (
         <div className="text-white">
-          <section id="landing" className="relative overflow-hidden h-screen">
-            <LandingSection />
-          </section>
-          <section id="about" className="h-screen">
-            <AboutSection />
-          </section>
-          <section id="stack" className="">
-            <StackSection />
-          </section>
-          <section id="projects" className="">
-            <ProjectSection />
-          </section>
-          <section id="footer" className="">
-            <FooterSection />
-          </section>
+          <div className="hidden lg:block fixed top-[75%] -translate-y-[75%] left-[-12vh] rotate-90">
+            <p className="text-muted-foreground font-bold tracking-widest">
+              Graylenbigelow@gmail.com
+            </p>
+          </div>
+          <div className="w-full h-full overflow-hidden">
+            <section id="landing" className="">
+              <LandingSection />
+            </section>
+            <section id="about" className="pb-[125px]">
+              <AboutSection />
+            </section>
+            <section id="stack" className="pb-[125px]">
+              <StackSection />
+            </section>
+            <section id="projects" className="">
+              <ProjectSection />
+            </section>
+            <section id="footer" className="pt-16">
+              <FooterSection />
+            </section>
+          </div>
         </div>
       )}
     </main>
