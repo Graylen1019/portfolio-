@@ -7,7 +7,6 @@ export const FooterSection = () => {
   return (
     <footer className="w-full h-[20vh] py-8 md:py-12 text-white text-center relative flex flex-col justify-center items-center">
       <div
-        data-aos="fade-up"
         className="container mx-auto px-4 flex flex-col justify-center items-center"
       >
         <p className="text-lg md:text-xl mb-4 font-semibold">
