@@ -69,7 +69,7 @@ export default function Home() {
             <section id="projects" className="">
               <ProjectSection />
             </section>
-            <section id="footer" className="md:pt-16">
+            <section id="footer" className="pt-32 md:pt-16">
               <FooterSection />
             </section>
           </div>
