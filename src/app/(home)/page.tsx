@@ -69,9 +69,9 @@ export default function Home() {
             <section id="projects" className="">
               <ProjectSection />
             </section>
-            <section id="footer" className="pt-32 md:pt-16">
+            <footer className="w-full h-[20vh] py-8 md:py-12 text-white text-center relative flex flex-col justify-center items-center">
               <FooterSection />
-            </section>
+            </footer>
           </div>
         </div>
       )}
