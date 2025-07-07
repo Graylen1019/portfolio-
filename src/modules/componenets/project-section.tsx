@@ -63,7 +63,6 @@ export const ProjectSection = () => {
             data-aos-delay={100} 
             className="bg-[#2a2a2a] rounded-lg shadow-lg overflow-hidden flex flex-col"
           >
-            {/* Project Image */}
             <div className="relative w-full h-48 sm:h-64 bg-gray-700 flex items-center justify-center">
               {project.image ? (
                 <Image
@@ -78,7 +77,6 @@ export const ProjectSection = () => {
               )}
             </div>
 
-            {/* Project Content */}
             <div className="p-6 flex flex-col flex-grow">
               <h2 className="text-2xl font-bold text-[#af76c4] mb-2">
                 {project.title}
@@ -87,7 +85,6 @@ export const ProjectSection = () => {
                 {project.description}
               </p>
 
-              {/* Technologies Used */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.techStack.map((tech, techIndex) => (
                   <span
@@ -99,7 +96,6 @@ export const ProjectSection = () => {
                 ))}
               </div>
 
-              {/* Links */}
               <div className="flex justify-start gap-4 mt-auto pt-4 border-t border-gray-700">
                 {project.liveLink && (
                   <a

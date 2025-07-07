@@ -11,10 +11,7 @@ export const LandingSection = () => {
 
   return (
     <div className="w-screen h-[100svh] min-h-[530px] flex flex-col md:flex-row items-center justify-center md:justify-between lg:max-w-[65vw] md:mx-auto px-4 py-16 md:py-4 text-white relative">
-      {/* Left content block */}
       <div className="md:w-1/2 flex flex-col justify-center max-md:items-center max-md:w-full py-16 md:py-0">
-        {" "}
-        {/* Added py-16 or a custom py- to push content */}
         <div className="max-w-[544px]">
           <h1
             className="leading-[.95] text-5xl max-md:text-center sm:text-7xl font-anton"
@@ -35,7 +32,7 @@ export const LandingSection = () => {
             </span>
             , specializing in
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
-              Next.js {""}
+              Next.js
             </span>
             Where i build immersive digital experiences, passionately crafting
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
@@ -57,12 +54,11 @@ export const LandingSection = () => {
         </div>
       </div>
 
-      {/* Scroll Down Arrow - now clickable */}
       <button
         data-aos="fade-down"
         data-aos-delay="300"
-        onClick={scrollToAboutMe} // Add onClick handler
-        aria-label="Scroll to About Me section" // Good for accessibility
+        onClick={scrollToAboutMe}
+        aria-label="Scroll to About Me section"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#af76c4] rounded-full p-2" // Add button styles
       >
         <ChevronDown className=" h-24 w-36 md:h-36 md:w-48 text-[#af76c4]" />

@@ -4,7 +4,7 @@ export const StackSection = () => {
   return (
     <div
       id="container"
-      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4" // Removed h-[100svh] and max-h-[536px]
+      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4"
     >
       <div className="flex items-center gap-4">
         <h1
@@ -26,8 +26,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div className="">
                 <Image
                   width={40}
@@ -43,8 +41,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -60,8 +56,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div className="">
                 <Image
                   width={40}
@@ -77,8 +71,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -94,8 +86,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -120,8 +110,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -139,8 +127,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -165,8 +151,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={60}
@@ -190,8 +174,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={60}
@@ -207,8 +189,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
@@ -224,8 +204,6 @@ export const StackSection = () => {
               data-aos="fade-up"
               className="flex gap-3.5 items-center leading-none"
             >
-              {" "}
-              {/* Corrected gap-3 5 to gap-3.5 */}
               <div>
                 <Image
                   width={40}
