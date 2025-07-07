@@ -35,7 +35,7 @@ export const AboutSection = () => {
               data-aos="fade-down"
               className="text-sm md:text-lg leading-relaxed mb-4"
             >
-              Hello! I am
+              Hello! I am {""}
               <span className="font-semibold text-[#af76c4]">
                 Graylen Bigelow
               </span>
@@ -48,7 +48,7 @@ export const AboutSection = () => {
               data-aos="fade-left"
               className="text-sm md:text-lg leading-relaxed mb-4"
             >
-              Currently, as a
+              Currently, as a {""}
               <span className="font-semibold text-[#af76c4]">
                 Senior Shift Manager at McDonalds
               </span>

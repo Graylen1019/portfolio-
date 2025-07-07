@@ -32,7 +32,7 @@ export const LandingSection = () => {
             </span>
             , specializing in
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
-              Next.js
+              Next.js {""}
             </span>
             Where i build immersive digital experiences, passionately crafting
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
