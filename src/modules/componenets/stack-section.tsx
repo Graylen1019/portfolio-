@@ -4,18 +4,18 @@ export const StackSection = () => {
   return (
     <div
       id="container"
-      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4"
+      className="flex items-center justify-center flex-col w-screen max-w-[1148px] mx-auto px-4 space-y-10"
     >
       <div className="flex items-center gap-4">
         <h1
           data-aos="fade-up"
-          className="text-4xl sm:text-5xl font-bold text-center text-[#af76c4] mb-20"
+          className="text-4xl sm:text-5xl font-bold text-center text-[#af76c4] "
         >
           My stack
         </h1>
       </div>
-      <div className="space-y-24 md:space-y-32">
-        <div className="grid sm:grid-cols-12">
+      <div className="space-y-16 md:space-y-24 lg:space-y-32 scale-[.85]">
+        <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
             <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               frontend:
@@ -98,7 +98,7 @@ export const StackSection = () => {
             </div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-12">
+        <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
             <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               backend:
@@ -139,7 +139,7 @@ export const StackSection = () => {
             </div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-12">
+        <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
             <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               database:
@@ -163,7 +163,7 @@ export const StackSection = () => {
             </div>
           </div>
         </div>
-        <div className="grid sm:grid-cols-12">
+        <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
             <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
               tools:

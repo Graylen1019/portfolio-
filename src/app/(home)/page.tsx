@@ -60,13 +60,13 @@ export default function Home() {
             <section id="landing" className="">
               <LandingSection />
             </section>
-            <section id="about" className="pb-[125px]">
+            <section id="about" className="md:pb-[64px]">
               <AboutSection />
             </section>
-            <section id="stack" className="pb-[125px]">
+            <section id="stack" className="py-[64px] ">
               <StackSection />
             </section>
-            <section id="projects" className="">
+            <section id="projects" className="py-[64px]">
               <ProjectSection />
             </section>
             <footer className="w-full h-[20vh] py-8 md:py-12 text-white text-center relative flex flex-col justify-center items-center">

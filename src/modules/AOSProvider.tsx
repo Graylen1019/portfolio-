@@ -12,7 +12,7 @@ export default function AOSProvider({ children }: AOSProviderProps) {
   useEffect(() => {
     AOS.init({
       duration: 800,
-      once: false,
+      once: true,
       mirror: true,
       offset: 120,
       disable: false,

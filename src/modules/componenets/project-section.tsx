@@ -47,15 +47,15 @@ export const ProjectSection = () => {
   return (
     <div
       id="projects-container"
-      className="w-screen max-w-[1148px] mx-auto px-4 text-white"
+      className="w-screen max-w-[1148px] mx-auto px-4 text-white "
     >
-      <div className="flex items-center gap-4 mb-20 justify-center">
-        <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] uppercase leading-none">
+      <div className="flex items-center gap-4 justify-center">
+        <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] leading-none font-bold">
           My Projects
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 scale-[0.75]">
         {projects.map((project) => (
           <div
             key={project.id}

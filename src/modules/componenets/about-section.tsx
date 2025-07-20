@@ -9,7 +9,7 @@ export const AboutSection = () => {
     >
       <div
         id="wrapper"
-        className="text-white p-8 md:p-12 rounded-lg w-full max-w-6xl"
+        className="text-white p-8 md:p-12 rounded-lg w-full max-w-6xl "
       >
         <h2
           data-aos="fade-up"
@@ -17,7 +17,7 @@ export const AboutSection = () => {
         >
           About Me
         </h2>
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-36">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-36 scale-[0.95]">
           <div
             data-aos="fade-right"
             className="hidden md:w-1/2 md:flex justify-center"
@@ -39,33 +39,31 @@ export const AboutSection = () => {
               <span className="font-semibold text-[#af76c4]">
                 Graylen Bigelow
               </span>
-              , a passionate and driven frontend developer who embarked on my
-              coding journey, when I discovered a profound interest in crafting
-              intuitive user interfaces (UI), building robust functionality, and
-              ensuring seamless responsive designs across all devices.
+              . I discovered frontend development through a love of clean
+              interfaces and seamless functionality, and ever since, I’ve been
+              focused on crafting high-quality digital products using
+              technologies like React, Next.js, TypeScript, and JavaScript.
             </p>
             <p
               data-aos="fade-left"
               className="text-sm md:text-lg leading-relaxed mb-4"
             >
-              Currently, as a {""}
+              Before stepping into tech, I honed leadership and communication
+              skills as a {""}
               <span className="font-semibold text-[#af76c4]">
                 Senior Shift Manager at McDonalds
               </span>
-              , I have honed valuable transferable skills that directly
-              contribute to my capabilities as a developer. My extensive
-              experience in teamwork, leadership, and training – coupled with
-              certifications in training and leadership – has equipped me with a
-              strong foundation in collaborative problem-solving, project
-              coordination, and effectively guiding teams.
+              , where I led teams, trained new hires, and solved problems under
+              pressure. That experience taught me how to collaborate, stay
+              adaptable, and always put people first — qualities I now bring to
+              every dev project I work on.
             </p>
             <p
               data-aos="fade-up"
               className="text-sm md:text-lg leading-relaxed"
             >
-              I am eager to apply my growing technical expertise and leadership
-              acumen to build engaging web experiences and contribute to
-              innovative software solutions.
+              I am currently looking to grow my skills even further and
+              contribute to teams building innovative, scalable software.
             </p>
           </div>
         </div>
