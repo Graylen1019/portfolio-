@@ -20,7 +20,7 @@ export const AboutSection = () => {
         <div className="flex flex-col md:flex-row items-center gap-8 md:gap-36 scale-[0.95]">
           <div
             data-aos="fade-right"
-            className="hidden md:w-1/2 md:flex justify-center"
+            className="max-md:mb-8 md:w-1/2 justify-center"
           >
             <Image
               width={192}

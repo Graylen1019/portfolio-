@@ -1,5 +1,5 @@
-// landing-section.tsx (Adjusted to use lucide-react and scroll to an ID)
-import { ChevronDown } from "lucide-react"; // Import ChevronDown from lucide-react
+import { ChevronDown, FileDown, FileUp, Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 export const LandingSection = () => {
   const scrollToAboutMe = () => {
@@ -10,8 +10,8 @@ export const LandingSection = () => {
   };
 
   return (
-    <div className="w-screen h-[100svh] min-h-[530px] flex flex-col md:flex-row items-center justify-center md:justify-between lg:max-w-[65vw] md:mx-auto px-4 py-16 md:py-4 text-white relative">
-      <div className="md:w-1/2 flex flex-col justify-center max-md:items-center max-md:w-full py-16 md:py-0">
+    <div className="w-screen h-[100svh] min-h-[530px] flex flex-col md:flex-row items-center justify-center md:justify-between lg:max-w-[70vw] md:mx-auto px-4 py-16 md:py-4 text-white relative">
+      <div className="flex flex-col justify-center max-md:items-center max-md:w-full py-16 md:py-0">
         <div className="max-w-[544px]">
           <h1
             className="leading-[.95] text-5xl max-md:text-center sm:text-7xl font-anton"
@@ -39,17 +39,54 @@ export const LandingSection = () => {
               functional, responsive designs and innovative software solutions!
             </span>
           </p>
-          <div className="max-md:flex max-md:items-center max-md:justify-center">
-            <a
-              data-aos="fade-right"
-              className="group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden bg-primary text-[#af76c4] hover:bg-primary-hover mt-9 banner-button slide-up-and-fade"
-              target="_blank"
-              href={"https://www.linkedin.com/in/graylen-bigelow-834435371"}
-              rel="noopener noreferrer"
-            >
-              <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
-              <span className="z-[1]">Learn More</span>
-            </a>
+          <div className="flex flex-col md:flex-row items-center max-md:justify-center gap-4 md:gap-8 mt-6">
+            <div className="flex items-center gap-4 text-white">
+              <Link
+                href="https://www.linkedin.com/in/graylen-bigelow-834435371"
+                target="_blank"
+                aria-label="LinkedIn"
+                className="gap-2 flex relative group hover:text-[#0A66C2] hover:scale-110 transition duration-200 ease-in-out"
+              >
+                <Linkedin size={22} /> <h1>LinkedIn</h1>
+                <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  LinkedIn
+                </span>
+              </Link>
+
+              <Link
+                href="https://github.com/Graylen1019"
+                target="_blank"
+                aria-label="GitHub"
+                className="gap-2 flex relative group hover:text-gray-300 hover:scale-110 transition duration-200 ease-in-out"
+              >
+                <Github size={22} /> <h1>Github</h1>
+                <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  GitHub
+                </span>
+              </Link>
+
+              <Link
+                href="/resume.pdf"
+                aria-label="View Resume"
+                className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
+              >
+                <FileUp size={22} /> <h1>View Resume</h1>
+                <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  View Resume
+                </span>
+              </Link>
+
+              <Link
+                href="/resume.docx"
+                aria-label="Download Resume"
+                className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
+              >
+                <FileDown size={22} className="" /> <span>Download Resume</span>
+                <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  Download Resume
+                </span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
