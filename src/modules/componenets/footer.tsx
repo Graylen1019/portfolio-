@@ -5,7 +5,7 @@ export const FooterSection = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="container mx-auto px-4 flex flex-col justify-center items-center">
+    <div className="container mx-auto flex flex-col justify-center items-center">
       <p className="text-lg md:text-xl mb-4 font-semibold">
         <a
           href="mailto:Graylenbigelow@gmail.com"

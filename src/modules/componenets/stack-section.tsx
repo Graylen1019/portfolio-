@@ -14,7 +14,7 @@ export const StackSection = () => {
           My stack
         </h1>
       </div>
-      <div className="space-y-16 md:space-y-24 lg:space-y-32 scale-[.85]">
+      <div className="space-y-16 md:space-y-24 lg:space scale-[.85]">
         <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
           <div data-aos="fade-right" className=" sm:col-span-5">
             <p className="text-3xl sm:text-4xl font-anton leading-none text-muted-foreground uppercase">
