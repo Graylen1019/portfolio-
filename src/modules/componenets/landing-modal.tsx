@@ -72,7 +72,7 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
 
         <div className="w-full relative rounded-lg p-6 sm:p-10 max-w-4xl md:w-1/3 max-h-[90vh] overflow-y-auto flex flex-col items-center justify-center">
           <h2 className="hidden md:block text-3xl sm:text-4xl font-bold mb-8 text-center">Contact Me</h2>
-          <form ref={form} onSubmit={sendEmail} className="w-full max-w-xl space-y-4 mb-20">
+          <form ref={form} onSubmit={sendEmail} className="w-full max-w-xl space-y-4">
             <div>
               <label htmlFor="user_name" className="block text-lg font-medium text-gray-300 mb-2">Name</label>
               <input

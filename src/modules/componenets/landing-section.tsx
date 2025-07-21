@@ -40,14 +40,14 @@ export const LandingSection = () => {
             </span>
           </p>
           <div className="flex flex-col md:flex-row items-center max-md:justify-center gap-4 md:gap-8 mt-6">
-            <div className="flex items-center gap-4 text-white">
+            <div className="justify-center flex items-center gap-4 text-white">
               <Link
                 href="https://www.linkedin.com/in/graylen-bigelow-834435371"
                 target="_blank"
                 aria-label="LinkedIn"
-                className="gap-2 flex relative group hover:text-[#0A66C2] hover:scale-110 transition duration-200 ease-in-out"
+                className="justify-center items-center gap-2 flex relative group hover:text-[#0A66C2] hover:scale-110 transition duration-200 ease-in-out"
               >
-                <Linkedin size={22} /> <span>LinkedIn</span>
+                <Linkedin size={22} className="size-4 md:size-6" /> <span className="text-sm md:text-lg">LinkedIn</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   LinkedIn
                 </span>
@@ -57,9 +57,9 @@ export const LandingSection = () => {
                 href="https://github.com/Graylen1019"
                 target="_blank"
                 aria-label="GitHub"
-                className="gap-2 flex relative group hover:text-gray-800 hover:scale-110 transition duration-200 ease-in-out"
+                className="items-center justify-center gap-2 flex relative group hover:text-gray-800 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <Github size={22} /> <span>Github</span>
+                <Github size={22} className="size-4 md:size-6" /> <span className="text-sm md:text-lg">Github</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   GitHub
                 </span>
@@ -68,9 +68,9 @@ export const LandingSection = () => {
               <Link
                 href="/resume.pdf"
                 aria-label="View Resume"
-                className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
+                className="items-center justify-center gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <FileUp size={22} /> <span>View</span>
+                <FileUp size={22} className="size-4 md:size-6" /> <span className="text-xs md:text-lg">View</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   View Resume
                 </span>
@@ -79,9 +79,9 @@ export const LandingSection = () => {
               <Link
                 href="/resume.docx"
                 aria-label="Download Resume"
-                className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
+                className="items-center justify-center gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <FileDown size={22} className="" /> <span>Download</span>
+                <FileDown size={22} className="size-4 md:size-6" /> <span className="text-sm md:text-lg">Download</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   Download Resume
                 </span>

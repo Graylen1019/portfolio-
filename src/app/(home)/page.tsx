@@ -59,14 +59,14 @@ export default function Home() {
           {!isModalOpen && (
             <div className="hidden space-x-4 items-center justify-center md:flex fixed bottom-4 right-4">
 
-              <span className="text-2xl text-white">
+              <span className="text-lg text-white ">
                 Contact Me
               </span>
               <Button
                 onClick={() => setIsModalOpen(true)}
-                className="flex items-center justify-center size-22 rounded-full cursor-pointer hover:scale-105 hover:text-[#dee2d5dd]"
+                className="flex items-center justify-center size-20 rounded-full cursor-pointer hover:scale-105 hover:text-[#dee2d5dd]"
               >
-                <MailIcon className="size-12" />
+                <MailIcon className="size-8" />
               </Button>
             </div>
           )}
