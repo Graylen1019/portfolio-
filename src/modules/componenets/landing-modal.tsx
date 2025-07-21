@@ -60,13 +60,13 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
       {/* Button to close the modal */}
       <Button
         variant={"ghost"}
-        className="z-10 cursor-pointer absolute top-4 right-4 sm:top-8 sm:right-8 text-gray-400 hover:text-white transition-colors duration-200"
+        className=" rounded-full z-10 cursor-pointer absolute top-6 right-4"
         onClick={() => {
           setIsModalOpen(false);
         }}
         aria-label="Close modal"
       >
-        <X size={36} /> {/* Changed from AlignJustify to X icon */}
+        <X size={36} className="size-10" /> {/* Changed from AlignJustify to X icon */}
       </Button>
       <div className="w-full space-y-10 md:space-x-48  flex flex-col items-center justify-center md:flex-row mx-auto py-10 px-4">
 

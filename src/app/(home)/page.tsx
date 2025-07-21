@@ -83,12 +83,12 @@ export default function Home() {
                   <section id="landing" className="">
                     <Button
                       variant={"ghost"}
-                      className="z-10 cursor-pointer absolute top-4 right-4 block md:hidden"
+                      className="rounded-full flex justify-center items-center z-10 cursor-pointer absolute top-4 right-4 md:hidden"
                       onClick={() => {
                         setIsModalOpen(true);
                       }}
                     >
-                      <AlignJustify size={42} className=" size-10" />
+                      <AlignJustify size={22} className=" size-10" />
                     </Button>
                     <LandingSection />
                   </section>
