@@ -47,7 +47,7 @@ export const LandingSection = () => {
                 aria-label="LinkedIn"
                 className="gap-2 flex relative group hover:text-[#0A66C2] hover:scale-110 transition duration-200 ease-in-out"
               >
-                <Linkedin size={22} /> <h1>LinkedIn</h1>
+                <Linkedin size={22} /> <span>LinkedIn</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   LinkedIn
                 </span>
@@ -57,9 +57,9 @@ export const LandingSection = () => {
                 href="https://github.com/Graylen1019"
                 target="_blank"
                 aria-label="GitHub"
-                className="gap-2 flex relative group hover:text-gray-300 hover:scale-110 transition duration-200 ease-in-out"
+                className="gap-2 flex relative group hover:text-gray-800 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <Github size={22} /> <h1>Github</h1>
+                <Github size={22} /> <span>Github</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   GitHub
                 </span>
@@ -70,7 +70,7 @@ export const LandingSection = () => {
                 aria-label="View Resume"
                 className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <FileUp size={22} /> <h1>View Resume</h1>
+                <FileUp size={22} /> <span>View</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   View Resume
                 </span>
@@ -81,7 +81,7 @@ export const LandingSection = () => {
                 aria-label="Download Resume"
                 className="gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
-                <FileDown size={22} className="" /> <span>Download Resume</span>
+                <FileDown size={22} className="" /> <span>Download</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                   Download Resume
                 </span>
