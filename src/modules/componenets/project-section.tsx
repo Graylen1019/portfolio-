@@ -1,150 +1,185 @@
 import Image from "next/image";
+import React, { useState } from "react"; // Re-import useState
+import { ProjectModal } from "./project-modal";
 
-export const ProjectSection = () => {
-  const projects = [
+// Define a type for your project structure for better type safety
+// This interface should match the one in ProjectModal.tsx
+interface Project {
+  id: number;
+  title: string;
+  description: string; // Shorter description for the main card view
+  techStack: string[];
+  image: string;
+  liveLink?: string; // Optional link to live demo
+  githubLink?: string; // Optional link to GitHub repo
+  longDescription?: string; // Detailed description for the modal
+  keyFeatures?: string[]; // Bullet points for features in the modal
+  challenges?: string; // Challenges faced during the project
+  learnings?: string; // Key takeaways/learnings from the project
+}
+
+// ProjectSection no longer accepts any props related to modal management
+export const ProjectSection: React.FC = () => {
+  // Your existing projects array with added detailed fields for the modal
+  const projects: Project[] = [
     {
       id: 1,
       title: "Youtube Clone",
-      description:
-        "Engineered a full-stack video sharing platform offering secure user authentication, efficient video uploads, and seamless content streaming. This project showcases a modern web application architecture.",
+      description: "Engineered a full-stack video sharing platform offering secure user authentication, efficient video uploads, and seamless content streaming. This project showcases a modern web application architecture.",
       techStack: ["bun", "Next.js", "TypeScript", "Tailwind CSS", "tRPC", "Drizzle ORM", "Clerk.js", "Mux", "UploadThing", "zod", "shadcn", "lucide-react"],
       image: "/projects/youtube-ss.png",
-      liveLink: "https://new-tube-project.vercel.app/", 
+      liveLink: "https://new-tube-project.vercel.app/",
       githubLink: "https://github.com/Graylen1019/NewTube-project",
+      longDescription: "This project was a deep dive into building a scalable video platform from the ground up. It involved setting up robust authentication with Clerk.js, managing video uploads and streaming with Mux and UploadThing, and ensuring data integrity with Drizzle ORM. The real-time capabilities for comments and interactions were particularly challenging but rewarding. The aim was to replicate core YouTube functionalities, focusing on performance and user experience.",
+      keyFeatures: [
+        "User authentication (signup/login) with Clerk.js",
+        "Video upload, processing, and seamless streaming via Mux and UploadThing",
+        "Search and filter functionality for videos",
+        "Like/dislike system for user engagement",
+        "Commenting system for video interactions",
+        "Modern web application architecture using tRPC for type-safe APIs"
+      ],
+      challenges: "Implementing efficient video streaming and handling large file uploads securely were significant challenges. Optimizing database queries for complex relationships, especially in a real-time context, also required careful consideration and database schema design with Drizzle ORM.",
+      learnings: "Gained extensive experience with serverless functions, advanced database schema design, and integrating multiple third-party APIs for media processing. Improved skills in performance optimization and building full-stack applications with Next.js and Bun."
     },
     {
       id: 2,
       title: "Google Docs Clone",
-      description:
-        "Created a real-time collaborative document editor application, drawing inspiration from Google Docs, which implements sophisticated synchronization mechanisms to provide a fluid and concurrent editing experience for multiple users.",
-      techStack: ["npm", "Next.js", "TypeScript", "Tailwind CSS", "Clerk.js", "liveblocks", "shadcn", "lucide-react" /* assumed, common for real-time */],
-      image: "/projects/docs-ss.png", 
-      liveLink: "https://google-docs-rouge.vercel.app/", 
+      description: "Created a real-time collaborative document editor application, drawing inspiration from Google Docs, which implements sophisticated synchronization mechanisms to provide a fluid and concurrent editing experience for multiple users.",
+      techStack: ["npm", "Next.js", "TypeScript", "Tailwind CSS", "Clerk.js", "liveblocks", "shadcn", "lucide-react"],
+      image: "/projects/docs-ss.png",
+      liveLink: "https://google-docs-rouge.vercel.app/",
       githubLink: "https://github.com/Graylen1019/Google-docs",
+      longDescription: "The primary goal of this project was to understand and implement real-time collaboration. Liveblocks was instrumental in achieving seamless document synchronization across multiple users. It involved complex state management and optimistic UI updates to provide a smooth user experience, simulating the collaborative power of Google Docs.",
+      keyFeatures: [
+        "Real-time collaborative text editing with Liveblocks",
+        "Rich text formatting capabilities (bold, italic, underline, etc.)",
+        "Multiple user cursors and presence indicators",
+        "Document saving and loading functionality",
+        "Secure user authentication with Clerk.js"
+      ],
+      challenges: "The biggest challenge was managing concurrent edits and ensuring data consistency across all connected clients. Latency compensation for a smooth, lag-free user experience during real-time typing was also a complex aspect. Integrating Liveblocks effectively required a deep dive into its API and concepts.",
+      learnings: "Deepened understanding of WebSocket-based real-time APIs, collaborative editing algorithms, and optimistic UI design patterns. Gained practical experience in building highly interactive and synchronized web applications."
     },
     {
       id: 3,
-      title: "OMDb Movie API", 
-      description:
-        "Developed a responsive web application that leverages the OMDb API, providing access to a vast database of over 280,000 movies. This project demonstrates strong proficiency in front-end development principles and advanced state management techniques for a seamless user experience.",
+      title: "OMDb Movie API",
+      description: "Developed a responsive web application that leverages the OMDb API, providing access to a vast database of over 280,000 movies. This project demonstrates strong proficiency in front-end development principles and advanced state management techniques for a seamless user experience.",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-      image: "/projects/OMDb-ss.png", 
+      image: "/projects/OMDb-ss.png",
       liveLink: "https://final-proj-3.vercel.app/",
-      githubLink: "https://github.com/Graylen1019/Final-proj-3", 
+      githubLink: "https://github.com/Graylen1019/Final-proj-3",
+      longDescription: "This project focused heavily on front-end architecture, API integration, and user experience design. I implemented various filtering, sorting, and search functionalities to allow users to easily navigate the vast OMDb movie database. It demonstrates advanced state management techniques to ensure a smooth and responsive interface, even with a large amount of data.",
+      keyFeatures: [
+        "Search movies by title, year, or type",
+        "Detailed view for each movie (plot, cast, ratings, genre)",
+        "Responsive design for optimal viewing on all devices",
+        "Pagination for efficient browsing of search results",
+        "Robust error handling for API requests"
+      ],
+      challenges: "Handling API rate limits effectively, optimizing data fetching strategies to minimize load times, and designing an intuitive search and filter system for a large dataset were key challenges. Ensuring a good user experience when dealing with external API dependencies also required careful consideration.",
+      learnings: "Improved proficiency in consuming RESTful APIs, asynchronous data handling, and building highly interactive user interfaces. Gained experience in designing efficient data flows for external data sources."
     },
     {
       id: 4,
       title: "Skinstric.ai Intern Project",
-      description:
-        "As an internship project, I engineered an application that converts user-submitted or webcam images to base64 for AI analysis, accurately predicting age, sex, and race via an external API. The application highlights strong development practices, including effective state management, responsive design, and polished transitions and animations.",
+      description: "As an internship project, I engineered an application that converts user-submitted or webcam images to base64 for AI analysis, accurately predicting age, sex, and race via an external API. The application highlights strong development practices, including effective state management, responsive design, and polished transitions and animations.",
       techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-      image: "/projects/skinstric-ss.png", 
-      liveLink: "https://skinstric-intern.vercel.app/", 
-      githubLink: "https://github.com/Graylen1019/skinstric-intern", 
+      image: "/projects/skinstric-ss.png",
+      liveLink: "https://skinstric-intern.vercel.app/",
+      githubLink: "https://github.com/Graylen1019/skinstric-intern",
+      longDescription: "This internship project provided hands-on experience with AI API integration and client-side image processing. The focus was on creating a seamless user flow for image submission, displaying real-time feedback, and presenting AI analysis results clearly. Ensuring cross-browser compatibility for webcam access and handling large base64 strings efficiently without impacting performance were interesting and critical aspects of this project.",
+      keyFeatures: [
+        "Image upload functionality (file input)",
+        "Live webcam feed integration for image capture",
+        "Client-side image processing and conversion to Base64",
+        "Integration with an external AI API for age, sex, and race prediction",
+        "Displaying AI prediction results with clear visualizations",
+        "Responsive design with polished transitions and animations"
+      ],
+      challenges: "Working with browser camera APIs and handling large base64 strings efficiently without impacting performance were critical. Integrating with a specific external AI API required careful data formatting and understanding of its response structure. Ensuring the UI remained responsive during image processing was also a key challenge.",
+      learnings: "Gained practical experience with client-side image manipulation, interacting with external AI services, and building responsive UIs for data visualization. Learned about optimizing performance for data-intensive client-side operations."
     },
   ];
 
+  // Re-added state to control modal visibility and selected project data
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // Function to open the modal with specific project data
+  const openModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsProjectModalOpen(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setIsProjectModalOpen(false);
+    setSelectedProject(null); // Clear selected project when closing
+  };
+
   return (
+
     <div
       id="projects-container"
-      className="w-screen max-w-[1148px] mx-auto px-4 text-white "
+      className="w-screen max-w-[1024px] mx-auto px-4 py-20 text-white"
     >
-      <div className="flex items-center gap-4 justify-center">
-        <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] leading-none font-bold">
-          My Projects
-        </h1>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 scale-[0.75]">
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            data-aos="fade-right"
-            data-aos-delay={100} 
-            className="bg-[#2a2a2a] rounded-lg shadow-lg overflow-hidden flex flex-col"
-          >
-            <div className="relative w-full h-48 sm:h-64 bg-gray-700 flex items-center justify-center">
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={`${project.title} screenshot`}
-                  layout="fill"
-                  objectFit="contain"
-                  className="rounded-t-lg"
-                />
-              ) : (
-                <span className="text-white text-lg">Image Coming Soon</span>
-              )}
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow">
-              <h2 className="text-2xl font-bold text-[#af76c4] mb-2">
-                {project.title}
-              </h2>
-              <p className="text-gray-300 text-sm mb-4 flex-grow">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.techStack.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="bg-[#af76c4]/20 text-[#af76c4] text-xs font-semibold px-2.5 py-0.5 rounded-full"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex justify-start gap-4 mt-auto pt-4 border-t border-gray-700">
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-white hover:text-[#af76c4] transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      stroke="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                      />
-                    </svg>
-                    Live Demo
-                  </a>
-                )}
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-white hover:text-[#af76c4] transition-colors"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.493.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.196-6.086 8.196-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
+          <div className="flex items-center justify-center mb-16">
+            <h1 data-aos="fade-up" className="text-5xl text-[#Af76c4] leading-tight font-extrabold tracking-tight">
+              My Projects
+            </h1>
           </div>
-        ))}
-      </div>
+
+          <div className="flex flex-col gap-8">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                data-aos="fade-right"
+                data-aos-delay={100}
+                // Call the local openModal function when the card is clicked
+                onClick={() => openModal(project)}
+                className="bg-[#242424] rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row items-center p-6 border border-transparent hover:border-[#af76c4]/40 hover:bg-[#2c2c2c] transition-all duration-300 ease-in-out cursor-pointer"
+              >
+                {project.image && (
+                  <div className="relative w-full h-40 md:w-64 md:h-40 flex-shrink-0 mb-6 md:mb-0 md:mr-8 rounded-lg overflow-hidden shadow-md bg-gray-700">
+                    <Image
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-lg"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col flex-grow">
+                  <h2 className="text-3xl font-bold text-[#af76c4] mb-2 leading-tight">
+                    {project.title}
+                  </h2>
+                  <p className="text-gray-300 text-base mb-4 leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.techStack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-[#af76c4]/15 text-[#af76c4] text-xs font-medium px-3 py-1 rounded-full"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+
+      {/* ProjectModal is now rendered here, controlled by ProjectSection's state */}
+      {isProjectModalOpen && selectedProject && (
+        <ProjectModal project={selectedProject} onClose={closeModal} />
+      )}
     </div>
   );
 };
