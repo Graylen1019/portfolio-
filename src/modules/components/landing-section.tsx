@@ -1,5 +1,6 @@
 import { ChevronDown, FileDown, FileUp, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
+import { GitStats } from "./git-stats";
 
 export const LandingSection = () => {
   const scrollToAboutMe = () => {
@@ -8,7 +9,6 @@ export const LandingSection = () => {
       aboutMeSection.scrollIntoView({ behavior: "smooth" });
     }
   };
-
   return (
     <div className="w-screen h-[100svh] min-h-[530px] flex flex-col md:flex-row items-center justify-center md:justify-between lg:max-w-[70vw] md:mx-auto px-4 py-16 md:py-4 text-white relative">
       <div className="flex flex-col justify-center max-md:items-center max-md:w-full py-16 md:py-0">
@@ -26,15 +26,15 @@ export const LandingSection = () => {
             data-aos-delay="100"
             className="mt-6 text-normal md:text-lg text-white font-normal max-md:text-center"
           >
-            Hello! Im a
+            Hello! I am a {""}
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
               Frontend React Developer
             </span>
-            , specializing in
+            , specializing in {""}
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
               Next.js {""}
             </span>
-            Where i build immersive digital experiences, passionately crafting
+            Where i build immersive digital experiences, passionately crafting {""}
             <span className="ml-1 uppercase text-normal text-[#af76c4]">
               functional, responsive designs and innovative software solutions!
             </span>
@@ -90,6 +90,9 @@ export const LandingSection = () => {
           </div>
         </div>
       </div>
+
+
+      <GitStats />
 
       <button
         data-aos="fade-down"
