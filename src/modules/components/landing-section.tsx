@@ -98,7 +98,7 @@ export const LandingSection = () => {
         data-aos-delay="300"
         onClick={scrollToAboutMe}
         aria-label="Scroll to About Me section"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer focus:outline-none" // Add button styles
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer focus:outline-none" // Add button styles
       >
         <FaChevronDown size={70} color="#af76c4" />
       </button>

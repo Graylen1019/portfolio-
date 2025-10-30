@@ -5,11 +5,11 @@ export const AboutSection = () => {
   return (
     <div
       id="container"
-      className="h-[100svh] flex items-center justify-center p-4 "
+      className="h-svh flex justify-center pt-48"
     >
       <div
         id="wrapper"
-        className="text-white p-8 md:p-12 rounded-lg w-full max-w-6xl "
+        className="text-white px-8 md:px-12 rounded-lg w-full max-w-7xl "
       >
         <h2
           data-aos="fade-up"
@@ -30,42 +30,37 @@ export const AboutSection = () => {
               className="rounded-full shadow-lg w-48 h-48 md:w-72 md:h-72 object-cover border-4 border-[#af76c4]"
             />
           </div>
-          <div className="md:w-1/2 text-center md:text-left">
+          <div className="md:w-1/2 text-center md:text-left space-y-4">
             <p
               data-aos="fade-down"
-              className="text-sm md:text-lg leading-relaxed mb-4"
+              className="text-sm md:text-lg leading-relaxed"
             >
-              Hello! I am {""}
-              <span className="font-semibold text-[#af76c4]">
-                Graylen Bigelow
-              </span>
-              . I discovered frontend development through a love of clean
-              interfaces and seamless functionality, and ever since, I’ve been
-              focused on crafting high-quality digital products using
-              technologies like React, Next.js, TypeScript, and JavaScript.
+              Hello! I’m{' '}
+              <span className="font-semibold text-[#af76c4]">Graylen Bigelow</span>,
+              a passionate Frontend Developer with a knack for turning ideas into interactive, user-friendly web applications.
             </p>
-            <p
-              data-aos="fade-left"
-              className="text-sm md:text-lg leading-relaxed mb-4"
-            >
-              Before stepping into tech, I honed leadership and communication
-              skills as a {""}
-              <span className="font-semibold text-[#af76c4]">
-                Senior Shift Manager at McDonalds
-              </span>
-              , where I led teams, trained new hires, and solved problems under
-              pressure. That experience taught me how to collaborate, stay
-              adaptable, and always put people first — qualities I now bring to
-              every dev project I work on.
-            </p>
+
             <p
               data-aos="fade-up"
               className="text-sm md:text-lg leading-relaxed"
             >
-              I am currently looking to grow my skills even further and
-              contribute to teams building innovative, scalable software.
+              My expertise lies in React, Next.js, and TypeScript, creating responsive and accessible experiences that look great across devices.
+              I’ve contributed to real-world projects like <span className="font-semibold text-[#af76c4]">Skinstric AI</span>, a real-time skin analysis platform,
+              and I mentor students at <span className="font-semibold text-[#af76c4]">Frontend Simplified</span>, helping them build high-quality frontend applications
+              and gain confidence in modern web development.
             </p>
+
+            <p
+              data-aos="fade-up"
+              className="text-sm md:text-lg leading-relaxed"
+            >
+              I’m always exploring new tools and techniques to refine my craft — from performance optimizations and scalable component libraries to accessible design and smooth animations.
+              Every project I work on is an opportunity to create something meaningful, practical, and enjoyable for users.
+            </p>
+
+            
           </div>
+
         </div>
       </div>
     </div>

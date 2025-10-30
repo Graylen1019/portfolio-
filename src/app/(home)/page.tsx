@@ -103,7 +103,7 @@ export default function Home() {
                   <section id="projects">
                     <ProjectSection />
                   </section>
-                  <footer className="w-full h-[20vh] py-8 md:py-12 text-white text-center relative flex flex-col justify-center items-center">
+                  <footer>
                     <FooterSection />
                   </footer>
                 </>

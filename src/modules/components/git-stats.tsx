@@ -29,7 +29,7 @@ export function GitStats() {
 
     return (
         <div
-            // data-aos="fade-up"
+            data-aos="fade-left"
             className=" space-y-1 items-center"
             
         >
