@@ -1,6 +1,7 @@
 // components/GitStats.tsx
 "use client";
 import { useEffect, useState } from "react";
+import { FaCodeCommit, FaFolderTree } from "react-icons/fa6";
 
 type Stats = {
     publicRepos: number;
@@ -24,22 +25,25 @@ export function GitStats() {
 
     if (!stats) return
 
+    console.log("this ran")
+
     return (
         <div
-            data-aos="fade-up"
-            className="text-center space-y-1 text-sm md:text-base font-anton"
+            // data-aos="fade-up"
+            className=" space-y-1 items-center"
+            
         >
             <p className="font-semibold text-3xl">
                 GitHub <b className="text-purple-400">Stats</b>
             </p>
-            <p className="text-2xl">
-                📁 Repositories:
+            <p className="text-2xl inline-flex items-center">
+                <FaFolderTree size={20} className="mr-4"/> Repositories:
                 <span className="font-bold ml-2 text-purple-400">
                     {stats.publicRepos ?? "—"}
                 </span>
             </p>
-            <p className="text-2xl">
-                🧠 Commits:
+            <p className="text-2xl flex items-center">
+                <FaCodeCommit size={20} className="mr-4"/> Commits:
                 <span className="font-bold ml-2 text-purple-400">{stats.totalCommits ?? "—"}
                 </span>
             </p>
