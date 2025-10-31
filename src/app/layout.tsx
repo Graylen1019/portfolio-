@@ -78,7 +78,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`bg-gradient-to-b from-black to-[#232323] ${anton} antialiased`}
+        className={`bg-linear-to-b from-black to-[#232323] ${anton} antialiased`}
       >
         <Analytics />
         <BackgroundBeamsWithCollision className="fixed inset-0 z-0" />

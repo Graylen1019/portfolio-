@@ -148,3 +148,17 @@ html {
   }
 }
 
+@keyframes pulse-line {
+  0%, 100% { opacity: 0.6; width: 60px; }
+  50% { opacity: 1; width: 80px; }
+}
+
+
+html {
+  scroll-snap-type: y mandatory;
+}
+section {
+  scroll-snap-align: start;
+}
+
+
