@@ -66,6 +66,7 @@ export const LandingSection = () => {
 
               <Link
                 href="/resume.pdf"
+                target="-blank"
                 aria-label="View Resume"
                 className="items-center justify-center gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
@@ -76,7 +77,8 @@ export const LandingSection = () => {
               </Link>
 
               <Link
-                href="/resume.docx"
+                href="/resume.pdf"
+                download
                 aria-label="Download Resume"
                 className="items-center justify-center gap-2 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
