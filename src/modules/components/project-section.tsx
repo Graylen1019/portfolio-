@@ -115,7 +115,7 @@ export const ProjectSection: React.FC<{ sectionIndex?: number }> = ({ sectionInd
   return (
     <section
       id="projects"
-      className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-t from-black to-[#232323] text-white"
+      className="w-full h-full flex flex-col items-center justify-center text-white"
     >
       <div ref={ref} className="flex justify-center py-24 w-full">
         <div className="flex items-center justify-center flex-col w-screen max-w-7xl mx-auto px-4 space-y-10">

@@ -103,7 +103,7 @@ export default function Home() {
   const anyModalOpen = isLandingModalOpen;
 
   return (
-    <main className="text-white overflow-x-hidden relative select-none bg-[#0a0a0a]">
+    <main className="text-white overflow-x-hidden relative select-none">
       {loading ? (
         <LoadingSection />
       ) : (

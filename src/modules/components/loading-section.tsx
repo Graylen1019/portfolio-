@@ -38,7 +38,7 @@ export const LoadingSection = () => {
         {[300, 500, 700, 900, 1100, 1300, 1500].map((duration, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-t from-black to-[#2a2a2a] h-full w-[14.2857142857vw] duration-1000 transition ease-in-out ${
+            className={`bg-linear-to-t from-black to-[#2a2a2a] h-full w-[14.2857142857vw] duration-1000 transition ease-in-out ${
               fadeOut ? "border-[#af76c4] border-l-4 " : ""
             } ${translate}`}
             style={{ transitionDuration: `${duration}ms` }}
