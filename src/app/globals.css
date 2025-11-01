@@ -121,44 +121,17 @@
   }
 }
 
-body {
-  background-color: #232323;
-  overflow-x: hidden;
-}
 
-html {
-  scroll-behavior: smooth;
-}
-
-/* Inside your globals.css or main CSS file */
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes scaleInFadeIn {
-  from {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes pulse-line {
-  0%, 100% { opacity: 0.6; width: 60px; }
-  50% { opacity: 1; width: 80px; }
-}
-
-
-html {
-  scroll-snap-type: y mandatory;
-}
 section {
-  scroll-snap-align: start;
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+
+
+
 
 
