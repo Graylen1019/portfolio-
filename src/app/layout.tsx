@@ -3,7 +3,6 @@ import React from "react";
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
-import AOSProvider from "@/modules/AOSProvider";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import Analytics from "@/components/analytics";
 
@@ -56,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-         <script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
@@ -83,11 +82,9 @@ export default function RootLayout({
         <Analytics />
         <BackgroundBeamsWithCollision className="fixed inset-0 z-0" />
 
-        <AOSProvider>
-          <div className="relative z-10">
-            {children}
-          </div>
-        </AOSProvider>
+        <div className="relative z-10">
+          {children}
+        </div>
       </body>
     </html>
   );
