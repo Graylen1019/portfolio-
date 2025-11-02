@@ -34,7 +34,7 @@ export const StackSection = ({ sectionIndex = 3 }: { sectionIndex?: number }) =>
   return (
     <section id="stack" className="w-full h-full flex items-center justify-center">
       <div ref={ref} className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16">
-        <div className="flex items-center gap-4 mb-10">
+        <div className="flex items-center justify-center gap-4 mb-10">
           <h1 className="stack-heading text-4xl sm:text-5xl font-bold text-center text-[#af76c4]">My Stack</h1>
         </div>
 

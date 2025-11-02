@@ -25,6 +25,7 @@ export default function Home() {
 
   // Keep ordering stable; pass sectionIndex so internals can sync.
   const sections = [
+    //@ts-expect-error next-line
     { node: <LandingSection sectionIndex={0} />, key: "landing" },
     { node: <AboutSection sectionIndex={1} />, key: "about" },
     { node: <ExperienceSection sectionIndex={2} />, key: "experience" },

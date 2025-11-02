@@ -1,15 +1,15 @@
 // layout.tsx
-import React from "react";
 import type { Metadata } from "next";
 import { Anton } from "next/font/google";
 import "./globals.css";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-import Analytics from "@/components/analytics";
 
-const anton = Anton({
-  weight: "400",
-  subsets: ["latin"],
-});
+
+import "./globals.css";
+import Analytics from "@/components/analytics";
+import { BackgroundBeams } from "@/components/ui/background-beams";
+
+const anton = Anton({ subsets: ["latin"], weight: ["400"] });
+
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bigelowgraylen.com'),
@@ -67,7 +67,7 @@ export default function RootLayout({
                 'https://www.linkedin.com/in/graylen-bigelow-834435371',
                 'https://github.com/Graylen1019',
               ],
-              jobTitle: 'Fullstack Developer',
+              jobTitle: 'Frontend Developer',
               worksFor: {
                 '@type': 'Organization',
                 name: 'Freelance',
@@ -77,14 +77,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`bg-linear-to-b from-black to-[#232323] ${anton} antialiased`}
+        className={`bg-black ${anton.className} antialiased`}
       >
         <Analytics />
-        <BackgroundBeamsWithCollision className="fixed inset-0 z-0" />
-
-        <div className="relative z-10">
-          {children}
-        </div>
+        <BackgroundBeams />
+        {children}
       </body>
     </html>
   );

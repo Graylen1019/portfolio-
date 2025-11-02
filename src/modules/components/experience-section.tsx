@@ -44,6 +44,7 @@ export function ExperienceSection({ sectionIndex = 2 }: { sectionIndex?: number 
   });
 
   return (
+    <>
     <section id="experience" className="w-full h-full flex items-center justify-center">
       <div ref={ref} className="max-w-4xl w-full px-6 md:px-12">
         <h2 className="exp-heading text-3xl md:text-5xl font-bold mb-12 flex items-center gap-3">
@@ -67,5 +68,7 @@ export function ExperienceSection({ sectionIndex = 2 }: { sectionIndex?: number 
         </div>
       </div>
     </section>
+    </>
+
   );
 }

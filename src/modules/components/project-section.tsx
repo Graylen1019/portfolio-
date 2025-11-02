@@ -113,154 +113,78 @@ export const ProjectSection: React.FC<{ sectionIndex?: number }> = ({ sectionInd
   });
 
   return (
-    <section
-      id="projects"
-      className="w-full h-full flex flex-col items-center justify-center text-white"
-    >
-      <div ref={ref} className="flex justify-center py-24 w-full">
-        <div className="flex items-center justify-center flex-col w-screen max-w-7xl mx-auto px-4 space-y-10">
-          {/* Header */}
-          <div className="flex flex-col items-center text-center mb-12">
-            <h1 className="proj-heading text-4xl md:text-6xl font-extrabold tracking-tight text-[#af76c4] mb-2">
-              Projects
-            </h1>
-            <p className="text-gray-400 text-base md:text-lg max-w-2xl">
-              A selection of my most recent builds — blending performance,
-              architecture, and clean UX.
-            </p>
-          </div>
-
-          {/* Two-column layout (Desktop) */}
-          <div className="hidden md:flex w-full max-w-6xl h-[80vh] gap-8">
-            {/* Left Column - Project List */}
-            <div className="w-1/3 flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-[#af76c4]/40 pr-2">
-              {projects.map((project) => (
-                <button
-                  key={project.id}
-                  onClick={() => setSelectedProject(project)}
-                  className={`proj-card group flex items-center gap-4 p-3 rounded-xl border border-transparent hover:border-[#af76c4]/40 hover:bg-[#1e1e1e] transition-all duration-300 ${selectedProject?.id === project.id
-                      ? "border-[#af76c4]/60 bg-[#1e1e1e]"
-                      : ""
-                    }`}
-                >
-                  <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="flex flex-col text-left">
-                    <span className="font-semibold text-[#af76c4]">
-                      {project.title}
-                    </span>
-                    <span className="text-xs text-gray-400 line-clamp-2">
-                      {project.description}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {/* Right Column - Project Details */}
-            <div
-              className={`flex-1 max-h-[60vh] bg-[#1a1a1a] rounded-2xl border border-[#af76c4]/20 p-6 transition-all duration-500 ${selectedProject
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-50 translate-x-6"
+    <section className="w-full h-full flex flex-col justify-center items-center py-24 px-6 md:px-12">
+      <h2 className="text-3xl font-bold text-[#af76c4] mb-8">Projects</h2>
+      <div ref={ref} className="flex flex-col md:flex-row gap-8 max-w-6xl">
+        <div className="flex flex-col gap-4 md:w-1/3">
+          {projects.map((project) => (
+            // eslint-disable-next-line jsx-a11y/role-supports-aria-props
+            <button
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              aria-selected={selectedProject?.id === project.id}
+              className={`p-4 text-left border rounded-xl transition-all ${selectedProject?.id === project.id
+                  ? "border-[#af76c4] bg-[#1a1a1a]"
+                  : "border-gray-700 hover:border-[#af76c4]/50"
                 }`}
             >
-              {selectedProject ? (
-                <div className="flex flex-col h-full justify-between">
-                  <div>
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-3xl font-bold text-[#af76c4]">
-                        {selectedProject.title}
-                      </h3>
-                      <button
-                        onClick={() => setSelectedProject(null)}
-                        className="text-gray-400 hover:text-white transition-colors"
-                      >
-                        ✕
-                      </button>
-                    </div>
+              <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+              <p className="text-sm text-gray-400">{project.description}</p>
+            </button>
+          ))}
+        </div>
 
-                    <p className="text-gray-300 mb-6 text-base leading-relaxed">
-                      {selectedProject.description}
-                    </p>
 
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {selectedProject.techStack.map((tech, i) => (
-                        <span
-                          key={i}
-                          className="bg-[#af76c4]/10 text-[#af76c4] text-xs px-3 py-1 rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="relative w-full h-80 rounded-lg overflow-hidden">
-                    <Image
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+        <div className="md:w-2/3 bg-[#121212] p-6 rounded-2xl shadow-lg">
+          {selectedProject && (
+            <>
+              <Image
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                width={800}
+                height={400}
+                className="rounded-xl object-cover mb-4"
+              />
+              <div>
+                <h3 className="text-2xl font-semibold mb-2 text-[#af76c4]">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-gray-300 mb-4">{selectedProject.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedProject.techStack.map((tech) => (
+                    <span key={tech} className="bg-[#222] text-gray-300 text-xs px-2 py-1 rounded-md">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              ) : (
-                <div className="flex items-center justify-center h-full text-gray-500 text-center">
-                  <p>Select a project to preview details</p>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Mobile grid */}
-          <div className="grid grid-cols-1 md:hidden gap-10 max-w-6xl w-full px-4 mt-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="proj-card bg-[#1c1c1c] border border-transparent hover:border-[#af76c4]/40 rounded-2xl overflow-hidden shadow-lg transition-all duration-300"
-              >
-                <div className="relative w-full h-56 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold text-[#af76c4] mb-3">
-                    {project.title}
-                  </h2>
-                  <p className="text-gray-300 text-sm md:text-base mb-5 line-clamp-3">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.techStack.slice(0, 6).map((tech, i) => (
-                      <span
-                        key={i}
-                        className="text-xs bg-[#af76c4]/10 text-[#af76c4] px-3 py-1 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex gap-4">
+                  {selectedProject.liveLink && (
+                    <a
+                      href={selectedProject.liveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#af76c4] hover:underline"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                  {selectedProject.githubLink && (
+                    <a
+                      href={selectedProject.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-[#af76c4]"
+                    >
+                      GitHub
+                    </a>
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-
-          {/* Footer fade-in */}
-          <div className="footer w-full">
-            <FooterSection />
-          </div>
+            </>
+          )}
         </div>
       </div>
+      <FooterSection />
     </section>
   );
 };
