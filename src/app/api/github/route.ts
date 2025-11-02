@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 const GITHUB_USERNAME = "Graylen1019";
 const TOKEN = process.env.GITHUB_TOKEN;
 
-export const revalidate = 3600 * 6; // every 6 hours
+export const revalidate = 21600; // every 6 hours
 
 export async function GET() {
   if (!TOKEN) {
