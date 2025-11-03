@@ -55,10 +55,11 @@ export default function Home() {
       scrollTrigger: {
         trigger: fadeRef.current,
         start: "top top",
-        end: () => `+=${slides.length * window.innerHeight}`,
+        end: () => `+=${slides.length * window.innerHeight * 2}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
+        
       },
     });
 
@@ -69,15 +70,15 @@ export default function Home() {
       // fade current out w/ slight zoom-out
       tl.to(
         slide,
-        { opacity: 0, scale: 1.05, duration: 0.9, ease: "power3.inOut" },
+        { opacity: 0, scale: 1.10, duration: 0.5, ease: "power3.inOut" },
         i
       );
 
       // fade next in w/ slight zoom-in
       tl.fromTo(
         next,
-        { opacity: 0, scale: 0.95 },
-        { opacity: 1, scale: 1, duration: 0.9, ease: "power3.inOut" },
+        { opacity: 0, scale: 0.75 },
+        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.inOut" },
         i
       );
 
@@ -127,14 +128,14 @@ export default function Home() {
 
           {/* Rotated Email Tag */}
           <aside className="fixed top-1/2 left-[-175px] -translate-y-1/2 rotate-90 z-20 flex items-center gap-4 group">
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:w-24 group-hover:bg-[#af76c4]" />
+            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500  group-hover:bg-[#af76c4]" />
             <a
               href="mailto:Graylenbigelow@gmail.com"
-              className="text-sm tracking-widest text-zinc-400 font-medium transition-all duration-300 group-hover:text-[#af76c4] group-hover:scale-105"
+              className="text-sm tracking-widest text-zinc-400 font-medium transition-all duration-300 group-hover:text-[#af76c4]"
             >
               Graylenbigelow@gmail.com
             </a>
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:w-24 group-hover:bg-[#af76c4]" />
+            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500  group-hover:bg-[#af76c4]" />
           </aside>
 
           {/* Modal */}
