@@ -48,6 +48,8 @@ export default function Home() {
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
+    gsap.set(slides, { willChange: "opacity, transform" }); // GPU hinting
+
     // ensure first is visible
     gsap.set(slides[0], { opacity: 1, scale: 1 });
 
@@ -55,11 +57,16 @@ export default function Home() {
       scrollTrigger: {
         trigger: fadeRef.current,
         start: "top top",
-        end: () => `+=${slides.length * window.innerHeight * 2}`,
-        scrub: true,
+        end: () => `+=${slides.length * window.innerHeight}`,
+        scrub: 0.4,             // slightly tighter follow
         pin: true,
         anticipatePin: 1,
-        
+        fastScrollEnd: true,
+        snap: {
+          snapTo: 1 / (slides.length - 1),
+          duration: 0.35,       // quick snap-in
+          ease: "power2.out",
+        },
       },
     });
 
@@ -67,32 +74,32 @@ export default function Home() {
       const next = slides[i + 1];
       if (!next) return;
 
-      // fade current out w/ slight zoom-out
       tl.to(
         slide,
-        { opacity: 0, scale: 1.10, duration: 0.5, ease: "power3.inOut" },
+        {
+          opacity: 0,
+          scale: 1.05,
+          duration: 0.75,
+          ease: "power3.out",
+        },
         i
       );
 
-      // fade next in w/ slight zoom-in
       tl.fromTo(
         next,
-        { opacity: 0, scale: 0.75 },
-        { opacity: 1, scale: 1, duration: 0.5, ease: "power3.inOut" },
+        { opacity: 0, scale: 0.95 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.75,
+          ease: "power3.out",
+        },
         i
       );
-
-      // tell children "section i+1 is active now"
-      tl.call(
-        () => {
-          window.dispatchEvent(
-            new CustomEvent("section:active", { detail: i + 1 })
-          );
-        },
-        [],
-        i + 0.01
-      );
     });
+
+
+
 
     // fire once for landing at start
     window.dispatchEvent(new CustomEvent("section:active", { detail: 0 }));
