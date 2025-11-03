@@ -56,7 +56,7 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
 
   return (
     // Main modal overlay/container
-    <div className="overflow-hidden text-white w-screen h-screen p-4 sm:p-8 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center z-50">
+    <div className="overflow-hidden text-white w-screen h-screen p-4 sm:p-8 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center justify-center z-50 bg-black">
       {/* Button to close the modal */}
       <Button
         variant={"ghost"}
