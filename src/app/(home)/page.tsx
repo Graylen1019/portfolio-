@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
@@ -23,7 +24,7 @@ export default function Home() {
   const [isLandingModalOpen, setIsLandingModalOpen] = useState(false);
   const fadeRef = useRef<HTMLDivElement>(null);
 
-  // Keep ordering stable; pass sectionIndex so internals can sync.
+  // Section order stays stable
   const sections = [
     //@ts-expect-error next-line
     { node: <LandingSection sectionIndex={0} />, key: "landing" },
@@ -39,7 +40,7 @@ export default function Home() {
     return () => clearTimeout(t);
   }, []);
 
-  // Master pinned timeline with depth-only crossfades + sync events
+  // GSAP fade timeline
   useEffect(() => {
     if (loading || !fadeRef.current) return;
 
@@ -47,10 +48,7 @@ export default function Home() {
     if (!slides.length) return;
 
     ScrollTrigger.getAll().forEach((t) => t.kill());
-
-    gsap.set(slides, { willChange: "opacity, transform" }); // GPU hinting
-
-    // ensure first is visible
+    gsap.set(slides, { willChange: "opacity, transform" });
     gsap.set(slides[0], { opacity: 1, scale: 1 });
 
     const tl = gsap.timeline({
@@ -58,13 +56,13 @@ export default function Home() {
         trigger: fadeRef.current,
         start: "top top",
         end: () => `+=${slides.length * window.innerHeight}`,
-        scrub: 0.4,             // slightly tighter follow
+        scrub: 0.35,
         pin: true,
         anticipatePin: 1,
         fastScrollEnd: true,
         snap: {
           snapTo: 1 / (slides.length - 1),
-          duration: 0.35,       // quick snap-in
+          duration: 0.4,
           ease: "power2.out",
         },
       },
@@ -79,7 +77,7 @@ export default function Home() {
         {
           opacity: 0,
           scale: 1.05,
-          duration: 0.75,
+          duration: 0.8,
           ease: "power3.out",
         },
         i
@@ -91,17 +89,13 @@ export default function Home() {
         {
           opacity: 1,
           scale: 1,
-          duration: 0.75,
+          duration: 0.8,
           ease: "power3.out",
         },
         i
       );
     });
 
-
-
-
-    // fire once for landing at start
     window.dispatchEvent(new CustomEvent("section:active", { detail: 0 }));
 
     return () => {
@@ -109,7 +103,10 @@ export default function Home() {
     };
   }, [loading]);
 
-  const anyModalOpen = isLandingModalOpen;
+  // Refresh ScrollTrigger when modal toggles
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, [isLandingModalOpen]);
 
   return (
     <main className="text-white overflow-x-hidden relative select-none">
@@ -117,10 +114,12 @@ export default function Home() {
         <LoadingSection />
       ) : (
         <>
-          {/* Floating Contact */}
-          {!anyModalOpen && (
+          {/* Floating Contact Button */}
+          {!isLandingModalOpen && (
             <div className="hidden md:flex items-center justify-center gap-4 fixed bottom-6 right-6 z-30">
-              <span className="text-lg text-zinc-300 tracking-wide">Contact Me</span>
+              <span className="text-lg text-zinc-300 tracking-wide">
+                Contact Me
+              </span>
               <Button
                 onClick={() => setIsLandingModalOpen(true)}
                 aria-label="Open Contact Modal"
@@ -135,22 +134,24 @@ export default function Home() {
 
           {/* Rotated Email Tag */}
           <aside className="fixed top-1/2 left-[-175px] -translate-y-1/2 rotate-90 z-20 flex items-center gap-4 group">
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500  group-hover:bg-[#af76c4]" />
+            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
             <a
               href="mailto:Graylenbigelow@gmail.com"
               className="text-sm tracking-widest text-zinc-400 font-medium transition-all duration-300 group-hover:text-[#af76c4]"
             >
               Graylenbigelow@gmail.com
             </a>
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500  group-hover:bg-[#af76c4]" />
+            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
           </aside>
 
-          {/* Modal */}
-          {isLandingModalOpen && (
-            <LandingModal setIsModalOpen={setIsLandingModalOpen} />
-          )}
+          {/* Modal via Portal (isolated from GSAP pinning) */}
+          {isLandingModalOpen &&
+            createPortal(
+              <LandingModal setIsModalOpen={setIsLandingModalOpen} />,
+              document.body
+            )}
 
-          {/* Pinned, overlapping slides */}
+          {/* Pinned Crossfade Sections */}
           <div ref={fadeRef} className="relative h-screen overflow-hidden">
             {sections.map((s, i) => (
               <div
