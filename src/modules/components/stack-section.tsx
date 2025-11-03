@@ -65,12 +65,12 @@ export const StackSection = ({ sectionIndex = 3 }: { sectionIndex?: number }) =>
 
               <div className="stack-icon flex gap-3.5 items-center leading-none">
                 <FaCss3Alt size={40} color="#00a6ff" />
-                <span className="text-xl md:text-2xl">Cascading Style Sheets (CSS)</span>
+                <span className="text-xl md:text-2xl">CSS</span>
               </div>
 
               <div className="stack-icon flex gap-3.5 items-center leading-none">
                 <FaHtml5 size={40} color="orange" />
-                <span className="text-xl md:text-2xl">HyperText Markup Language (HTML5)</span>
+                <span className="text-xl md:text-2xl">HTML5</span>
               </div>
             </div>
           </div>
