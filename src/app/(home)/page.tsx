@@ -146,6 +146,7 @@ export default function Home() {
 
           {/* Modal via Portal (isolated from GSAP pinning) */}
           {isLandingModalOpen &&
+            typeof window !== "undefined" &&
             createPortal(
               <LandingModal setIsModalOpen={setIsLandingModalOpen} />,
               document.body
