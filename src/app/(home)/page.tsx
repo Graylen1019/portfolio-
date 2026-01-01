@@ -24,7 +24,6 @@ export default function Home() {
   const [isLandingModalOpen, setIsLandingModalOpen] = useState(false);
   const fadeRef = useRef<HTMLDivElement>(null);
 
-  // Section order stays stable
   const sections = [
     //@ts-expect-error next-line
     { node: <LandingSection sectionIndex={0} />, key: "landing" },
@@ -34,7 +33,6 @@ export default function Home() {
     { node: <ProjectSection sectionIndex={4} />, key: "projects" },
   ];
 
-  // Simulated loading
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 2400);
     return () => clearTimeout(t);
@@ -42,7 +40,7 @@ export default function Home() {
 
   // GSAP fade timeline
   useEffect(() => {
-    if (loading || !fadeRef.current) return;
+    if (loading || isLandingModalOpen || !fadeRef.current) return;
 
     const slides = gsap.utils.toArray<HTMLDivElement>(".section");
     if (!slides.length) return;
@@ -101,11 +99,20 @@ export default function Home() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [loading]);
+  }, [loading, isLandingModalOpen]);
 
-  // Refresh ScrollTrigger when modal toggles
+  // ⭐ IMPORTANT FIX: do NOT unmount pinned content — hide it instead
   useEffect(() => {
-    ScrollTrigger.refresh();
+    if (isLandingModalOpen) {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.globalTimeline.clear();
+    }
+  }, [isLandingModalOpen]);
+
+  // Keep triggers aligned when modal toggles (safe)
+  useEffect(() => {
+    const id = setTimeout(() => ScrollTrigger.refresh(), 50);
+    return () => clearTimeout(id);
   }, [isLandingModalOpen]);
 
   return (
@@ -124,36 +131,21 @@ export default function Home() {
                 onClick={() => setIsLandingModalOpen(true)}
                 aria-label="Open Contact Modal"
                 className="flex items-center justify-center size-20 rounded-full cursor-pointer 
-                           transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#af76c4aa] 
-                           hover:text-[#af76c4] bg-zinc-900/60 backdrop-blur-md shadow-lg border border-[#af76c4]/30"
+                         transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_20px_#af76c4aa] 
+                         hover:text-[#af76c4] bg-zinc-900/60 backdrop-blur-md shadow-lg border border-[#af76c4]/30"
               >
                 <MailIcon className="size-8 animate-[pulse_3s_ease-in-out_infinite]" />
               </Button>
             </div>
           )}
 
-          {/* Rotated Email Tag */}
-          <aside className="fixed top-1/2 left-[-175px] -translate-y-1/2 rotate-90 z-20 flex items-center gap-4 group">
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
-            <a
-              href="mailto:Graylenbigelow@gmail.com"
-              className="text-sm tracking-widest text-zinc-400 font-medium transition-all duration-300 group-hover:text-[#af76c4]"
-            >
-              Graylenbigelow@gmail.com
-            </a>
-            <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
-          </aside>
-
-          {/* Modal via Portal (isolated from GSAP pinning) */}
-          {isLandingModalOpen &&
-            typeof window !== "undefined" &&
-            createPortal(
-              <LandingModal setIsModalOpen={setIsLandingModalOpen} />,
-              document.body
-            )}
-
-          {/* Pinned Crossfade Sections */}
-          <div ref={fadeRef} className="relative h-screen overflow-hidden">
+          {/* ⭐ FIX: KEEP THIS MOUNTED — JUST HIDE IT */}
+          <div
+            ref={fadeRef}
+            className={`relative h-screen overflow-hidden ${
+              isLandingModalOpen ? "hidden" : ""
+            }`}
+          >
             {sections.map((s, i) => (
               <div
                 key={s.key}
@@ -164,6 +156,29 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Rotated Email Tag */}
+          {!isLandingModalOpen && (
+            <aside className="fixed top-1/2 left-[-175px] -translate-y-1/2 rotate-90 z-20 flex items-center gap-4 group">
+              <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
+              <a
+                href="mailto:Graylenbigelow@gmail.com"
+                target="_blank"
+                className="text-sm tracking-widest text-zinc-400 font-medium transition-all duration-300 group-hover:text-[#af76c4]"
+              >
+                Graylenbigelow@gmail.com
+              </a>
+              <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
+            </aside>
+          )}
+
+          {/* Modal */}
+          {isLandingModalOpen &&
+            typeof window !== "undefined" &&
+            createPortal(
+              <LandingModal setIsModalOpen={setIsLandingModalOpen} />,
+              document.body
+            )}
         </>
       )}
     </main>
