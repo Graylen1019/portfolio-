@@ -28,6 +28,9 @@ const PROJECTS: Project[] = [
       "Drizzle",
       "Clerk",
       "Mux",
+      "upload-thing",
+      "shadcn",
+      "lucide-react"
     ],
     image: "/projects/youtube-ss.png",
     liveLink: "https://new-tube-project.vercel.app/",
@@ -38,7 +41,7 @@ const PROJECTS: Project[] = [
     title: "Google Docs Clone",
     description:
       "Real-time collaborative editor using Liveblocks and Clerk.",
-    techStack: ["Next.js", "TypeScript", "TailwindCSS", "Liveblocks"],
+    techStack: ["Next.js", "TypeScript", "TailwindCSS", "Liveblocks", "shadcn", "lucide-react"],
     image: "/projects/docs-ss.png",
     liveLink: "https://google-docs-rouge.vercel.app/",
     githubLink: "https://github.com/Graylen1019/Google-docs",
@@ -57,11 +60,21 @@ const PROJECTS: Project[] = [
     id: 4,
     title: "Skinstric AI",
     description:
-      "AI-powered skin analysis app using OpenAI Vision.",
+      "Skinstric is a premium, fully customizable skincare platform that uses the OpenAI Vision API and proprietary algorithms to design personalized formulas. Users get complete control over ingredients, expert guidance, and FDA/TGA-approved pharmacy support. Currently in open beta, Skinstric offers a highly personalized, AI-powered skincare experience.",
     techStack: ["Next.js", "TypeScript", "TailwindCSS"],
     image: "/projects/skinstric-ss.png",
     liveLink: "https://skinstric-intern.vercel.app/",
     githubLink: "https://github.com/Graylen1019/skinstric-intern",
+  },
+  {
+    id: 5,
+    title: "Summarist",
+    description:
+      "Summarist helps busy readers learn faster by providing concise book and briefcast summaries. Gain key insights in minutes, improve habits, and stay informed—all while saving time and boosting productivity.",
+    techStack: ["Next.js", "TypeScript", "TailwindCSS", "firebase", "shadcn", "lucide-react"],
+    image: "/projects/summarist.png",
+    liveLink: "https://virtual-internship-sand.vercel.app/",
+    githubLink: "https://github.com/Graylen1019/virtual-internship",
   },
 ];
 
@@ -94,10 +107,9 @@ export function ProjectSection({ sectionIndex }: ProjectsSectionProps) {
                   type="button"
                   onClick={() => setActiveId(project.id)}
                   className={`cursor-pointer rounded-xl border p-4 text-left transition-colors
-                    ${
-                      isActive
-                        ? "border-[#af76c4] bg-[#1a1a1a]"
-                        : "border-gray-700 hover:border-[#af76c4]/60"
+                    ${isActive
+                      ? "border-[#af76c4] bg-[#1a1a1a]"
+                      : "border-gray-700 hover:border-[#af76c4]/60"
                     }`}
                 >
                   <h3 className="text-lg font-semibold text-white">
