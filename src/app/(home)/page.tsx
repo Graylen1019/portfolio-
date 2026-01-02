@@ -45,10 +45,21 @@ export default function Home() {
     const slides = gsap.utils.toArray<HTMLDivElement>(".section");
     if (!slides.length) return;
 
+    // Kill old triggers
     ScrollTrigger.getAll().forEach((t) => t.kill());
-    gsap.set(slides, { willChange: "opacity, transform" });
-    gsap.set(slides[0], { opacity: 1, scale: 1 });
 
+    // Initialize all slides
+    gsap.set(slides, {
+      opacity: 0,
+      scale: 0.95,
+      pointerEvents: "none", // disable clicks initially
+      willChange: "opacity, transform",
+    });
+
+    // Make first slide visible
+    gsap.set(slides[0], { opacity: 1, scale: 1, pointerEvents: "auto" });
+
+    // Create timeline with scroll trigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: fadeRef.current,
@@ -66,10 +77,12 @@ export default function Home() {
       },
     });
 
+    // Animate each slide
     slides.forEach((slide, i) => {
       const next = slides[i + 1];
       if (!next) return;
 
+      // Fade out current slide
       tl.to(
         slide,
         {
@@ -77,29 +90,34 @@ export default function Home() {
           scale: 1.05,
           duration: 0.8,
           ease: "power3.out",
+          pointerEvents: "none", // disable clicks as it fades
         },
         i
       );
 
+      // Fade in next slide
       tl.fromTo(
         next,
-        { opacity: 0, scale: 0.95 },
+        { opacity: 0, scale: 0.95, pointerEvents: "none" }, // start disabled
         {
           opacity: 1,
           scale: 1,
           duration: 0.8,
           ease: "power3.out",
+          pointerEvents: "auto", // enable clicks when visible
         },
         i
       );
     });
 
+    // Dispatch custom event if you need
     window.dispatchEvent(new CustomEvent("section:active", { detail: 0 }));
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, [loading, isLandingModalOpen]);
+
 
   // ⭐ IMPORTANT FIX: do NOT unmount pinned content — hide it instead
   useEffect(() => {
@@ -140,16 +158,16 @@ export default function Home() {
           )}
 
           {/* ⭐ FIX: KEEP THIS MOUNTED — JUST HIDE IT */}
+
           <div
             ref={fadeRef}
-            className={`relative h-screen overflow-hidden ${
-              isLandingModalOpen ? "hidden" : ""
-            }`}
+            className={`relative h-screen overflow-hidden ${isLandingModalOpen ? "hidden" : ""
+              }`}
           >
             {sections.map((s, i) => (
               <div
                 key={s.key}
-                className="section absolute inset-0 opacity-0 will-change-transform"
+                className="section absolute inset-0 opacity-0 will-change-transform pointer-events-none"
                 style={{ zIndex: sections.length - i }}
               >
                 {s.node}
