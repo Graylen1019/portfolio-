@@ -47,7 +47,7 @@ export function ExperienceSection({ sectionIndex = 2 }: { sectionIndex?: number 
     <>
     <section id="experience" className="w-full h-full flex items-center justify-center">
       <div ref={ref} className="max-w-4xl w-full px-6 md:px-12">
-        <h2 className="exp-heading text-3xl md:text-5xl font-bold mb-12 flex items-center gap-3">
+        <h2 className="exp-heading text-3xl md:text-5xl font-bold mb-12 flex items-center gap-3 max-md:justify-center">
           <Briefcase className="text-[#af76c4]" size={34} />
           Experience
         </h2>
@@ -56,7 +56,7 @@ export function ExperienceSection({ sectionIndex = 2 }: { sectionIndex?: number 
           {experiences.map((exp, idx) => (
             <div
               key={idx}
-              className="exp-card border-l-2 border-[#af76c4]/50 pl-6 hover:border-[#af76c4] transition-colors duration-300"
+              className="exp-card border-l-2 border-[#af76c4]/50 pl-6 hover:border-[#af76c4] transition-colors duration-300 max-md:items-center max-md:justify-center"
             >
               <h3 className="text-xl md:text-2xl font-semibold text-[#af76c4]">{exp.role}</h3>
               <p className="text-zinc-400 text-sm mb-2">

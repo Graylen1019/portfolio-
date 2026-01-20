@@ -68,7 +68,7 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
       >
         <X size={36} className="size-10" /> {/* Changed from AlignJustify to X icon */}
       </Button>
-      <div className="w-full space-y-10 md:space-x-48  flex flex-col items-center justify-center md:flex-row mx-auto py-10 px-4">
+      <div className="w-full space-y-10 md:space-x-30 flex flex-col items-center justify-center md:flex-row mx-auto py-10 px-6">
 
         <div className="w-full relative rounded-lg p-6 sm:p-10 max-w-4xl md:w-1/3 max-h-[90vh] overflow-y-auto flex flex-col items-center justify-center">
           <h2 className="hidden md:block text-3xl sm:text-4xl font-bold mb-8 text-center">Contact Me</h2>
@@ -122,8 +122,8 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
         </div>
 
         {!statusMessage && (
-          <div className="space-y-10 md:space-x-28 w-full md:w-1/3 md:flex md:justify-center md:items-center">
-            <div className="flex md:flex-col justify-center gap-4 md:gap-12 text-white">
+          <div className="md:flex gap-x-12 items-center justify-center">
+            <div className="flex md:flex-col gap-4 md:gap-12 text-white justify-center items-center md:items-start w-full">
               <Link
                 href="/"
                 onClick={() => setIsModalOpen(false)}
@@ -137,9 +137,9 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
               </Link>
 
               <Link
-                href="#about"
+                href="/"
                 aria-label="About Me"
-                onClick={() => setIsModalOpen(false)}
+                onClick={() => alert('This feature is currently unavailable. Due to the current changes i have made, GSAP is not allowing this button to work. I am working on a fix!')}
 
                 className="items-center justify-center gap-1 flex relative group hover:text-gray-800 hover:scale-110 transition duration-200 ease-in-out"
               >
@@ -150,8 +150,8 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
               </Link>
 
               <Link
-                href="#stack"
-                onClick={() => setIsModalOpen(false)}
+                href="/"
+                onClick={() => alert('This feature is currently unavailable. Due to the current changes i have made, GSAP is not allowing this button to work. I am working on a fix!')}
 
                 aria-label="Stack"
                 className="items-center justify-center gap-1 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
@@ -163,20 +163,20 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
               </Link>
 
               <Link
-                href="#projects"
-                onClick={() => setIsModalOpen(false)}
+                href="/"
+                onClick={() => alert('This feature is currently unavailable. Due to the current changes i have made, GSAP is not allowing this button to work. I am working on a fix!')}
 
                 aria-label="Projects "
                 className="items-center justify-center gap-1 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >
                 <ProjectorIcon size={22} className="md:size-12" /> <span className="md:text-2xl">Projects</span>
                 <span className="absolute -top-6 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                  Projects
+                  My Projects
                 </span>
               </Link>
 
             </div>
-            <div className="flex md:flex-col justify-center gap-4 md:gap-12 text-white">
+            <div className="flex md:flex-col gap-4 md:gap-12 text-white items-center md:items-start justify-center">
               <Link
                 href="https://www.linkedin.com/in/graylen-bigelow-834435371"
                 target="_blank"
@@ -203,6 +203,7 @@ export const LandingModal: React.FC<ModalProps> = ({ setIsModalOpen }) => {
 
               <Link
                 href="/resume.pdf"
+                target="_blank"
                 aria-label="View Resume"
                 className="items-center gap-1 flex relative group hover:text-purple-400 hover:scale-110 transition duration-200 ease-in-out"
               >

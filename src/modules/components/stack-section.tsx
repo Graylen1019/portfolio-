@@ -33,12 +33,12 @@ export const StackSection = ({ sectionIndex = 3 }: { sectionIndex?: number }) =>
 
   return (
     <section id="stack" className="w-full h-full flex items-center justify-center">
-      <div ref={ref} className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16">
-        <div className="flex items-center justify-center gap-4 mb-10">
+      <div ref={ref} className="w-full max-w-7xl mx-auto px-4 md:px-8 py-16 ">
+        <div className="items-center justify-center gap-4 mb-8 hidden md:flex">
           <h1 className="stack-heading text-4xl sm:text-5xl font-bold text-center text-[#af76c4]">My Stack</h1>
         </div>
 
-        <div className="space-y-4 md:space-y-12 lg:space scale-[.95]">
+        <div className="space-y-4 md:space-y-12 lg:space scale-[.65] w-full md:scale-[0.95]">
           {/* Languages */}
           <div className="gap-10 md:gap-0 grid sm:grid-cols-12">
             <div className="sm:col-span-5">

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import { MailIcon } from "lucide-react";
+import Link from "next/link";
 
 import {
   LandingModal,
@@ -23,6 +24,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [isLandingModalOpen, setIsLandingModalOpen] = useState(false);
   const fadeRef = useRef<HTMLDivElement>(null);
+  const [_, setUnderMaintenance] = useState(false); // Placeholder for maintenance mode
 
   const sections = [
     //@ts-expect-error next-line
@@ -35,6 +37,7 @@ export default function Home() {
 
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 2400);
+    setUnderMaintenance(true); // Placeholder for maintenance mode
     return () => clearTimeout(t);
   }, []);
 
@@ -49,12 +52,14 @@ export default function Home() {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
     // Initialize all slides
-    gsap.set(slides, {
-      opacity: 0,
-      scale: 0.95,
-      pointerEvents: "none", // disable clicks initially
-      willChange: "opacity, transform",
-    });
+    slides.forEach((slide, i) => {
+      gsap.set(slide, {
+        opacity: 0,
+        scale: 0.95,
+        pointerEvents: i === 0 ? "auto" : "none", // disable clicks initially
+        willChange: "opacity, transform",
+      });
+    })
 
     // Make first slide visible
     gsap.set(slides[0], { opacity: 1, scale: 1, pointerEvents: "auto" });
@@ -77,12 +82,20 @@ export default function Home() {
       },
     });
 
+    // 🔑 FIX: stop pin-spacer from blocking clicks
+    const st = tl.scrollTrigger;
+    if (st?.pin && st.pin.parentNode) {
+      (st.pin.parentNode as HTMLElement).style.pointerEvents = "none";
+    }
+
+
     // Animate each slide
     slides.forEach((slide, i) => {
       const next = slides[i + 1];
       if (!next) return;
 
-      // Fade out current slide
+      const position = i + 0.001; // 👈 critical
+
       tl.to(
         slide,
         {
@@ -90,23 +103,22 @@ export default function Home() {
           scale: 1.05,
           duration: 0.8,
           ease: "power3.out",
-          pointerEvents: "none", // disable clicks as it fades
+          pointerEvents: "none",
         },
-        i
+        position
       );
 
-      // Fade in next slide
       tl.fromTo(
         next,
-        { opacity: 0, scale: 0.95, pointerEvents: "none" }, // start disabled
+        { opacity: 0, scale: 0.95, pointerEvents: "none" },
         {
           opacity: 1,
           scale: 1,
           duration: 0.8,
           ease: "power3.out",
-          pointerEvents: "auto", // enable clicks when visible
+          pointerEvents: "auto",
         },
-        i
+        position
       );
     });
 
@@ -141,7 +153,7 @@ export default function Home() {
         <>
           {/* Floating Contact Button */}
           {!isLandingModalOpen && (
-            <div className="hidden md:flex items-center justify-center gap-4 fixed bottom-6 right-6 z-30">
+            <div className="hidden md:flex items-center justify-center gap-4 fixed bottom-12 right-6 z-30">
               <span className="text-lg text-zinc-300 tracking-wide">
                 Contact Me
               </span>
@@ -188,6 +200,20 @@ export default function Home() {
               </a>
               <div className="h-px w-20 bg-[#af76c4]/40 transition-all duration-500 group-hover:bg-[#af76c4]" />
             </aside>
+          )}
+
+          {/* Maintenance Mode Banner */}
+          {!isLandingModalOpen && _ && (
+            <>
+            <div className="fixed bottom-0 left-0 w-full bg-yellow-600 text-black text-center py-2 z-20">
+                <p className="text-lg font-bold">
+                  ⚠️ This site is currently under maintenance. Some features may  not work as expected. I appreciate your patience! For more info, click <Link href={"https://github.com/Graylen1019/portfolio-/blob/main/README.md"} className="text-white text-lg font-medium">&quot;Here&quot;</Link>. ⚠️
+                </p>
+              </div>
+              <button className="bg-red w-4 h-6">
+                More Info
+              </button>
+              </>
           )}
 
           {/* Modal */}

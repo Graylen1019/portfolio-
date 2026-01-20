@@ -6,20 +6,20 @@ import { GitStats } from "./git-stats";
 import { FaChevronDown, FaEye, FaFileArrowDown, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 export const LandingSection = () => {
-  const scrollToAbout = () => {
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToAbout = () => {
+  //   document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  // };
 
   return (
     <>
       <section
         id="landing"
-        className="min-h-screen w-full flex"
+        className="min-h-screen w-full flex z-100"
         aria-label="Intro / Hero"
       >
-        <div className="flex mx-auto w-full max-w-7xl px-10 items-center justify-between">
+        <div className="flex flex-col mx-auto w-full max-w-xl md:max-w-7xl px-10 items-center justify-center md:justify-between md:flex-row z-100">
           {/* Left: Text */}
-          <div className="flex flex-col gap-6 w-[500px]">
+          <div className="flex flex-col gap-6 w-[300px] md:w-[500px] max-md:text-center">
             <h1 className="leading-[0.95] text-5xl sm:text-6xl font-anton">
               <span className="text-[#af76c4] font-bold block">GRAYLEN</span>
               <span className="ml-6 text-white font-bold block">BIGELOW</span>
@@ -63,7 +63,7 @@ export const LandingSection = () => {
                 href="/resume.pdf"
                 download
                 aria-label="Download Resume"
-                className="inline-flex items-center gap-2 hover:text-purple-400 transition-transform hover:scale-105"
+                className="hidden md:inline-flex items-center gap-2 hover:text-purple-400 transition-transform hover:scale-105"
               >
                 <FaFileArrowDown size={20} />{" "}
                 <span className="text-sm md:text-base">Download Resume</span>
@@ -72,16 +72,16 @@ export const LandingSection = () => {
           </div>
 
           {/* Right: Stats / Visual */}
-          <div className="">
+          <div className="hidden md:block">
             <GitStats />
           </div>
         </div>
 
         {/* Scroll hint (subtle) */}
         <button
-          onClick={scrollToAbout}
+          onClick={() => alert('This feature is currently unavailable. Due to the current changes i have made, GSAP is not allowing this button to work. I am working on a fix!')}
           aria-label="Scroll to About section"
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-80 hover:opacity-100 transition-opacity hover:cursor-pointer"
+          className="hidden md:block md:absolute bottom-12 left-1/2 -translate-x-1/2 opacity-80 hover:opacity-100 transition-opacity cursor-not-allowed"
         >
           <FaChevronDown size={48} color="#af76c4" />
         </button>
