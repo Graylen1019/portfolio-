@@ -28,7 +28,7 @@ export function AboutSection({ sectionIndex = 1 }: { sectionIndex?: number }) {
               <Image
                 width={256}
                 height={256}
-                src="/headshot.jpg"
+                src="/headshot.png"
                 alt="Graylen Bigelow"
                 className="about-image rounded-full shadow-lg w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-[#af76c4]"
               />
